@@ -21,9 +21,9 @@ const botoncons = document.getElementById("saldo")
 const botontrans = document.getElementById("trans")
 
 botondepo.addEventListener("click",()=> {
+    let plataActual = parseInt(registros[indice].plata)
     
-    
-    registros[indice].plata = deposito()
+    registros[indice].plata = deposito() + plataActual
     localStorage.setItem("registro", JSON.stringify(registros))
 })
 
@@ -32,7 +32,7 @@ botondepo.addEventListener("click",()=> {
 function deposito(){
     let monto = prompt("ingrese el monto a depositar")
     if(typeof(parseInt(monto))!=Number){
-        return monto
+        return parseInt(monto)
     }else{
         alert("ingreso un monto invalido")
     }
@@ -66,10 +66,17 @@ botonhisto.addEventListener("click", ()=> {
 })
 
 function transferencias(){
+    
+    let confirmacion=confirm("quiere hacer una transf")
+    console.log(confirmacion)
+    if( confirmacion == false){
+        return alert()
+
+    }
    const montotrans = prompt("ingrese el monto a transferir")
    const cbu = prompt("ingrese el cbu a  transferir")
   console.log( typeof(parseInt(montotrans)))
-   if(typeof(parseInt(montotrans)) !== Number){
+   if(typeof(parseInt(montotrans)) !== "number"){
 
     alert("ingreso datos incorrectos reintente")
    }else{
@@ -81,6 +88,8 @@ function transferencias(){
             transfRealizadas.push(data)
             registros[indice].plata -= montotrans
             localStorage.setItem("transferencias",JSON.stringify(transfRealizadas))
+            localStorage.setItem("registro", JSON.stringify(registros))
+
             }
             else{
                 alert("ingreso un monto superior que no posee en cuenta para operar vuelva a intentar ingresando otro monto")
