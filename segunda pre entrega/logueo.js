@@ -23,8 +23,8 @@ const login = (usuarioEntrante, contraEntrante)=>{
         alert("No existe o clave mal ingresada");
     }else{
         alert("Buenos dias")
-        localStorage.setItem("usuarioActual",JSON.stringify(userlogeado))
-        location.replace('http://127.0.0.1:5500/index.html')
+        localStorage.setItem("usuarioActual",userlogeado.nombre)
+        location.replace('http://127.0.0.1:5500/segunda%20pre%20entrega/index.html')
     }
 }
 

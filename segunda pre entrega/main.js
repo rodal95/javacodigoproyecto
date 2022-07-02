@@ -1,13 +1,17 @@
-let usuarioActual = JSON.parse((localStorage.getItem("usuarioActual")))
+let usuarioActual =localStorage.getItem("usuarioActual")
+console.log(usuarioActual)
+let registros = JSON.parse(localStorage.getItem("registro"))
+console.log(registros)
+const indice = registros.findIndex(user => user.nombre === usuarioActual)
 
-let sald = parseInt(usuarioActual.plata)
+
 let transfRealizadas =[]
 
 
 
 
 
-user.innerHTML = `Bienvenido Señor/a ${usuarioActual.nombre}`
+user.innerHTML = `Bienvenido Señor/a ${registros[indice].nombre}`
 
 
 
@@ -18,29 +22,24 @@ const botontrans = document.getElementById("trans")
 
 botondepo.addEventListener("click",()=> {
     
-    sald += parseInt(deposito())
-    localStorage.removeItem("usuarioActual")
-    usuarioActual.plata = sald
-    localStorage.setItem("usuarioActual", JSON.stringify(usuarioActual))
-
+    
+    registros[indice].plata = deposito()
+    localStorage.setItem("registro", JSON.stringify(registros))
 })
 
 
 
 function deposito(){
-
     let monto = prompt("ingrese el monto a depositar")
-    if(monto === null || monto === undefined || monto === NaN || monto === ""){
-        alert("ingreso un monto invalido")
-    }else{
-        
-        
-        }
+    if(typeof(parseInt(monto))!=Number){
         return monto
+    }else{
+        alert("ingreso un monto invalido")
+    }
 }
 
 botoncons.addEventListener("click", ()=> {
-    alert(`su saldo es ${sald}`)
+    alert(`su saldo es ${registros[indice].plata}`)
 })
 
 
@@ -69,16 +68,18 @@ botonhisto.addEventListener("click", ()=> {
 function transferencias(){
    const montotrans = prompt("ingrese el monto a transferir")
    const cbu = prompt("ingrese el cbu a  transferir")
-   if(montotrans == "" || cbu == "" || montotrans == null || cbu == null ){
+  console.log( typeof(parseInt(montotrans)))
+   if(typeof(parseInt(montotrans)) !== Number){
+
     alert("ingreso datos incorrectos reintente")
    }else{
-    if(saldo>= montotrans){
+    if(registros[indice].plata >= montotrans){
         const data = {
             monto: montotrans,
             codigo: cbu
                         }
             transfRealizadas.push(data)
-            saldo -= data.monto
+            registros[indice].plata -= montotrans
             localStorage.setItem("transferencias",JSON.stringify(transfRealizadas))
             }
             else{

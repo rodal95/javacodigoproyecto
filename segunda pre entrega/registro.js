@@ -33,7 +33,7 @@ const guardarEnLocal = (obj) => {
         usuarios = datosLocales,
         localStorage.setItem("registro", JSON.stringify(usuarios)))
         alert("registro exitoso")
-        location.replace('http://127.0.0.1:5500/login.html')
+        location.replace('http://127.0.0.1:5500/segunda%20pre%20entrega/login.html')
 }
 
 const verSiHayCosas = ()=>{
