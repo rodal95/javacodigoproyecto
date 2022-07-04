@@ -70,9 +70,9 @@ Swal.fire({
 })
 
 
-/* Transcripcion de transferencias realizadas */
-botontrans.addEventListener("click", ()=>{
-   Swal
+/* Transcripcion de transferencias realizadas */ 
+botontrans.addEventListener("click", async ()=>{
+  await Swal
     .fire({
         title: "Ingrese el monto a transferir",
         input: "number",
@@ -92,7 +92,7 @@ botontrans.addEventListener("click", ()=>{
         } */
 
 
-        Swal
+      await  Swal
         .fire({
             title: "Ingrese el CBU a transferir",
             input: "number",
