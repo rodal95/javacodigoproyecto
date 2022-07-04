@@ -20,11 +20,22 @@ botonLog.addEventListener("click", ()=>{
 const login = (usuarioEntrante, contraEntrante)=>{
     userlogeado = usuarios.find(usuario => usuario.nombre === usuarioEntrante && usuario.contra === contraEntrante)
     if(userlogeado === undefined){
-        alert("No existe o clave mal ingresada");
+        Swal.fire(
+            'No se reconoce el usuario ingresado o clave incorrecta',
+            
+          )
     }else{
-        alert("Buenos dias")
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Logueo Correcto',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
         localStorage.setItem("usuarioActual",userlogeado.nombre)
-        location.replace('http://127.0.0.1:5500/segunda%20pre%20entrega/index.html')
+        setTimeout(() => location.replace('http://127.0.0.1:5500/segunda%20pre%20entrega/index.html'), 2000)
+        
     }
 }
 
