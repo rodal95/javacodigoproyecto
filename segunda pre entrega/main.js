@@ -84,12 +84,13 @@ botontrans.addEventListener("click", async ()=>{
         if (resultado.value) {
             let montos = resultado.value;
             console.log(montos)
+            if(montos == undefined || montos == ""){
+                alert("Ingrese algo...")
+                return
+            }
         }
     });
-     /*    if(montotrans == undefined || montotrans == ""){
-            alert("Ingrese algo...")
-            return
-        } */
+       
 
 
       await  Swal
@@ -104,14 +105,15 @@ botontrans.addEventListener("click", async ()=>{
             if (resultado.value) {
                 let cbuIng = resultado.value;
                 console.log(cbuIng)
+                if(cbuIng == undefined || cbuIng == ""){
+                    alert("Ingrese algo...")
+                    return
+                }
             }
         });
        
 
-    /*     if(cbu == undefined || cbu == ""){
-            alert("Ingrese algo...")
-            return
-        } */
+        
         /* console.log( typeof(parseInt(montotrans)))
         if(typeof(parseInt(montotrans)) !== "number"){
             alert("ingreso datos incorrectos reintente")
