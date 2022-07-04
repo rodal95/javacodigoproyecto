@@ -81,14 +81,11 @@ botontrans.addEventListener("click", async ()=>{
         cancelButtonText: "Cancelar",
     })
     .then(resultado => {
-        if (resultado.value) {
+        if (resultado.value ) {
             let montos = resultado.value;
             console.log(montos)
-            if(montos == undefined || montos == ""){
-                alert("Ingrese algo...")
-                return
-            }
-        }
+            
+        } else{return  alert("Ingrese algo...")} 
     });
        
 
@@ -105,11 +102,8 @@ botontrans.addEventListener("click", async ()=>{
             if (resultado.value) {
                 let cbuIng = resultado.value;
                 console.log(cbuIng)
-                if(cbuIng == undefined || cbuIng == ""){
-                    alert("Ingrese algo...")
-                    return
-                }
-            }
+                
+            }else{return  alert("Ingrese algo...")} 
         });
        
 
