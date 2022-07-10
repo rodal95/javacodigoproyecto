@@ -34,7 +34,8 @@ const login = (usuarioEntrante, contraEntrante)=>{
           })
 
         localStorage.setItem("usuarioActual",userlogeado.nombre)
-        setTimeout(() => location.replace('http://127.0.0.1:5500/segunda%20pre%20entrega/index.html'), 2000)
+        setTimeout(() => location.replace(
+            'http://127.0.0.1:5500/segunda%20pre%20entrega/index.html'), 2000)
         
     }
 }

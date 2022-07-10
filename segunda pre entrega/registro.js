@@ -13,7 +13,8 @@ const guardarRegistro = () => {
     const user = {
         nombre: usuario.value,
         contra: pass.value,
-        plata: "0"
+        plata: "0",
+        trans: []
     }
     localStorage.getItem("registro") === null ? guardarEnLocal(user):(
         usuarios.find(elemento => elemento.nombre ===  user.nombre ) == undefined ? guardarEnLocal(user): alert("error, registro ya creado")

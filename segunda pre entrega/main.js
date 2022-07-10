@@ -4,7 +4,6 @@ let registros = JSON.parse(localStorage.getItem("registro"))
 console.log(registros)
 const indice = registros.findIndex(user => user.nombre === usuarioActual)
 
-
 let transfRealizadas =[]
 
 
@@ -19,7 +18,7 @@ user.innerHTML = `Bienvenido Señor/a ${registros[indice].nombre}`
 const botondepo = document.getElementById("dep")
 const botoncons = document.getElementById("saldo")
 const botontrans = document.getElementById("trans")
-
+/* boton para depositos */
 botondepo.addEventListener("click",()=> {
     let plataActual = parseInt(registros[indice].plata)
   let plataentra =  Swal
@@ -44,7 +43,7 @@ botondepo.addEventListener("click",()=> {
 
 
 
-/* CONSULTAS */
+/* boton para CONSULTAS de saldo */
 botoncons.addEventListener("click", ()=> {
     let timerInterval
 Swal.fire({
@@ -72,7 +71,9 @@ Swal.fire({
 
 /* Transcripcion de transferencias realizadas */ 
 botontrans.addEventListener("click", async ()=>{
-  await Swal
+let cbuIng = 0
+let montos = 0
+await Swal
     .fire({
         title: "Ingrese el monto a transferir",
         input: "number",
@@ -81,8 +82,8 @@ botontrans.addEventListener("click", async ()=>{
         cancelButtonText: "Cancelar",
     })
     .then(resultado => {
-        if (resultado.value ) {
-            let montos = resultado.value;
+        if (resultado.value >= registros[indice].plata) {
+            montos = resultado.value;
             console.log(montos)
             
         } else{return  alert("Ingrese algo...")} 
@@ -90,42 +91,24 @@ botontrans.addEventListener("click", async ()=>{
        
 
 
-      await  Swal
-        .fire({
-            title: "Ingrese el CBU a transferir",
-            input: "number",
-            showCancelButton: true,
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-        })
-        .then(resultado => {
-            if (resultado.value) {
-                let cbuIng = resultado.value;
-                console.log(cbuIng)
+await  Swal
+    .fire({
+        title: "Ingrese el CBU a transferir",
+        input: "number",
+        showCancelButton: true,
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            cbuIng = resultado.value;
                 
-            }else{return  alert("Ingrese algo...")} 
-        });
+        }else{return  alert("Ingrese algo...")} 
+    });
        
-
-        
-        /* console.log( typeof(parseInt(montotrans)))
-        if(typeof(parseInt(montotrans)) !== "number"){
-            alert("ingreso datos incorrectos reintente")
-        }else{
-        if(registros[indice].plata >= montotrans){
-            const data = {
-            monto: montotrans,
-            codigo: cbu
-                        }
-            transfRealizadas.push(data)
-            registros[indice].plata -= montotrans
-            localStorage.setItem("transferencias",JSON.stringify(transfRealizadas))
-            localStorage.setItem("registro", JSON.stringify(registros))
-            }
-            else{
-                alert("ingreso un monto superior que no posee en cuenta para operar vuelva a intentar ingresando otro monto")
-            } 
-        } */
+    
+    registros[indice].trans.push({monto: montos, cbu: cbuIng})
+    localStorage.setItem("registro", JSON.stringify(registros))
 
 })
 const lista = document.getElementById("historiales")
@@ -144,7 +127,6 @@ botonhisto.addEventListener("click", ()=> {
     }
 
 })
-
 
 /* function transferencias(){
     
