@@ -1,0 +1,62 @@
+{
+  "transferencias": [
+    {
+      "id": 1,
+      "nombre": "Rodrigo Alday",
+      "CBU": 1111111444114441,
+      "Monto":5000,
+      "Banco": "Macro"   
+     },
+    {
+      "id": 2,
+      "nombre": "Nacho Basilio",
+      "CBU": 22222222222222,
+      "Monto":5000,
+      "Banco": "Santander Rio"
+    },
+    {
+      "id": 3,
+      "nombre": "Sofia Mimesi",
+      "CBU": 333333333330000333333,
+      "Monto":11114447,
+      "Banco":"Galicia"
+    },
+    {
+      "id": 4,
+      "nombre": "Martin Ryan",
+      "CBU": 555555555555555555555,
+      "Monto":8594646,
+      "Banco":"Hipotecario"
+    },
+    {
+      "id": 5,
+      "nombre": "Rodrigo timbre",
+      "CBU": 1111111444114441,
+      "Monto":594128,
+      "Banco": "Santander Rio"   
+     },
+    {
+      "id": 6,
+      "nombre": "Nacho Ryan",
+      "CBU": 5555544414154,
+      "Monto":78444,
+      "Banco": "Hipotecario"
+    },
+    {
+      "id": 7,
+      "nombre": "Sofia Carla",
+      "CBU": 2554148887789521,
+      "Monto":80000,
+      "Banco":"Macro"
+    },
+    {
+      "id": 8,
+      "nombre": "Martin Sapo",
+      "CBU": 64656598888548,
+      "Monto":3602,
+      "Banco":"Macro"
+    }
+
+
+  ]
+}
